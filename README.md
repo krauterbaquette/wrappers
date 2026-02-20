@@ -140,6 +140,7 @@ Arguments:
   - Example: `[ "--silent" "--connect-timeout" "30" ]`
   - If provided, overrides automatic generation from `flags`
 - `preHook`: Shell script executed before the command (default: `""`)
+- `postHook`: Shell script executed after the command (default: `""`)
 - `passthru`: Additional attributes for the derivation's passthru (default: `{}`)
 - `aliases`: List of additional symlink names for the executable (default: `[]`)
 - `filesToPatch`: List of file paths (glob patterns) relative to package root to patch for self-references (default: `["share/applications/*.desktop"]`)

@@ -420,6 +420,7 @@ let
       # " " for "--flag value" or "=" for "--flag=value"
       args ? generateArgsFromFlags flags flagSeparator,
       preHook ? "",
+      postHook ? "",
       passthru ? { },
       aliases ? [ ],
       # List of file paths (glob patterns) relative to package root to patch for self-references (e.g., ["bin/*", "lib/*.sh"])
@@ -437,7 +438,8 @@ let
         ''
           ${envString}
           ${preHook}
-          exec ${exePath}${flagsString} "$@"
+          ${if postHook == "" then "exec" else ""} ${exePath}${flagsString} "$@"
+          ${postHook}
         ''
       ),
     }@funcArgs:
